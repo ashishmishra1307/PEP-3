@@ -1,29 +1,33 @@
-export const increment = () => {
-  return {
-    type: "INCREMENT",
-  };
+import React, { PureComponent } from "react";
+import { render } from "react-dom";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+
+import Counter from "./components/Counter";
+import History from "./components/History";
+import reducers from "./reducers";
+
+const styles = {
+  fontFamily: "sans-serif",
+  textAlign: "center"
 };
 
-export const decrement = () => {
-  return {
-    type: "DECREMENT",
-  };
-};
+class App extends PureComponent {
+  render() {
+    return (
+      <Provider store={createStore(reducers)}>
+        <div style={styles}>
+          <h2>
+            {"✨✨"} Simple Redux Counter Example {"✨✨"}
+          </h2>
+          <div>
+            <Counter />
+            <History />
+          </div>
+        </div>
+      </Provider>
+    );
+  }
+}
 
-export const reset = () => {
-  return {
-    type: "RESET",
-  };
-};
-
-export const logIn = () => {
-  return {
-    type: "LOG_IN",
-  };
-};
-
-export const logOut = () => {
-  return {
-    type: "LOG_OUT",
-  };
-};
+render(<App />, document.getElementById("root"));

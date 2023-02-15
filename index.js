@@ -1,20 +1,29 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import { createStore } from "redux";
-import allReducers from "./redux/reducers";
-import { Provider } from "react-redux";
+export const increment = () => {
+  return {
+    type: "INCREMENT",
+  };
+};
 
-//The created store
-const store = createStore(
-  allReducers,
-);
-ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+export const decrement = () => {
+  return {
+    type: "DECREMENT",
+  };
+};
+
+export const reset = () => {
+  return {
+    type: "RESET",
+  };
+};
+
+export const logIn = () => {
+  return {
+    type: "LOG_IN",
+  };
+};
+
+export const logOut = () => {
+  return {
+    type: "LOG_OUT",
+  };
+};
